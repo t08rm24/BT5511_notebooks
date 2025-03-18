@@ -1,0 +1,1214 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "428c8369-8d2b-425c-a804-f76271760664",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "dna = \"AUGGUCGAUUACCGCGCUUCGAGCAGGAUCUGCCAUAGCCUUUCCGAACCUGAACGUGGGCUAAAGCAUGUUUCCAUCCACAAGUUGGAAAAGCAACUUGGAAAGUCAUAUUUACGUGCCAAGGCGCAAAGUCUGUGUGAAGGGCCCAGUGGUCGCUCUGGGACCGUGAACCAAUUGAGCUCCGCGACGGAAUCACCUCUUUGUAAAAAGCCCGUGAACCUUGCCAAUCCAGGCAACGACUGGUACUCGUACUUGUACCGAUGUGCAGCGCCCCCUCACAGCCUUCGUGACGUCUUCUGCGAUGCGACCGCACUGUCUCAAGGGGCCGUCGUAUGUUGA\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "588dac3f-68f7-4492-b6bd-5f8291a804d2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def revcomp(dna_seq):\n",
+    "    dna_seq = dna_seq.replace( \"U\" , \"T\")\n",
+    "    rev_dict = {\"A\": \"T\" , \"T\" : \"A\" , \"G\" : \"C\" , \"C\" : \"G\"} \n",
+    "    rcomp = []\n",
+    "    for nt in dna_seq:   \n",
+    "        revnt = rev_dict[nt]\n",
+    "        rcomp.append(revnt)\n",
+    "    revlist = rcomp[::-1]\n",
+    "    final_rev = \"\".join(revlist)\n",
+    "    return(final_rev)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "142e22b3-ea33-44fb-90bf-36fa867bf7a1",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'TCAACATACGACGGCCCCTTGAGACAGTGCGGTCGCATCGCAGAAGACGTCACGAAGGCTGTGAGGGGGCGCTGCACATCGGTACAAGTACGAGTACCAGTCGTTGCCTGGATTGGCAAGGTTCACGGGCTTTTTACAAAGAGGTGATTCCGTCGCGGAGCTCAATTGGTTCACGGTCCCAGAGCGACCACTGGGCCCTTCACACAGACTTTGCGCCTTGGCACGTAAATATGACTTTCCAAGTTGCTTTTCCAACTTGTGGATGGAAACATGCTTTAGCCCACGTTCAGGTTCGGAAAGGCTATGGCAGATCCTGCTCGAAGCGCGGTAATCGACCAT'"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "revcomp(dna)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "ddd5ae61-7eda-467b-8945-378c665e8399",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import os "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "be3c7d38-a6bf-49d6-aea2-74933a88b0a9",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['.ipynb_checkpoints',\n",
+       " 'desktop.ini',\n",
+       " 'Untitled.ipynb',\n",
+       " 'Workshop 2 - Next steps in Python programming.html']"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "os.listdir()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "d61170da-ee4c-4a66-83f8-1cd0a26f15d8",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "os.path.exists(\"/\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "957d783a-ebb3-4f65-9254-be4d001faa69",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "id": "e4256228-d06f-48cf-9e88-2d6e9f45684a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'reyya'"
+      ]
+     },
+     "execution_count": 54,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "myList = [\"reyya\", \"dushie\", \"Kim\", \"Luna\"]\n",
+    "myList[0]\n",
+    "# note that Python is a 0-based language"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 92,
+   "id": "9d73e624-a6fb-411d-9d54-b79a2b942ae0",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['reyya', 'dushie']"
+      ]
+     },
+     "execution_count": 92,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "myList[0:2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 60,
+   "id": "6ed54c0d-dce7-4695-9492-3ee1d0c26212",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['Luna']"
+      ]
+     },
+     "execution_count": 60,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "myList[::-4] # the first 2 indices are empty, which just defaults to the first and last"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 66,
+   "id": "0d559ee6-aa29-4363-9f1d-cafca355a8f2",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'dushie'"
+      ]
+     },
+     "execution_count": 66,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "myList[1]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 68,
+   "id": "bbf95665-3169-46be-a2a8-748a1da83438",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['Luna', 'reyya']"
+      ]
+     },
+     "execution_count": 68,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "myList[::-3]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "id": "bdfa6ec6-43f4-4f5a-9c19-78f7d5cdf180",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "336"
+      ]
+     },
+     "execution_count": 40,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "dna_seqs = ['ATGGGACTGCCCTTGATGCCTCACGTATCCAAAAGCGTATCATGGAGCACTCGGAAACGCACTATAGCAATACCAGACCGTGATATACAACCAGATCACTCTACGATTAAACGACTGCGCCGCCGTATTGCGCTGCTTATCCGAGAAGCAGTCCCTCGTGCGACGCAGCACCAAGAACAAGTCTCAGAGTACCTTTGGACGTATGACTTCAGGATCGAGTCGGCGGCTAGGTTCTATGGGGAGCTCCGTGATAGGTCATCTAGACAGGGTGTGTATTATTTGAGAGTAAAACGAAATCCTCCTCGCATGTACGGGTCAATGGAATTCCCGGTCAGA',\n",
+    "            'ATGGACACCTGGACATACTCCCAAGAGGCTGGAGCAGTGCCCCATTCCTCGGTGCCTCAAGTTCTGGGAATGTGCAATCCTCCGCGAGACATTCAAGGTTTCAGACCACGCGATCGGGTTAAGATACTATCTCAAGTACTTCTTTCGTGTAAGGCACCACTAGAATTGCTTACTTATCCAGGCGGACAAACTGCAATCCTATCTTCATGGGGGGTAGATTTACCATTTTGTAAGAATCTAGACGCACCACGTGGGCGTAGCGACAGGGAGACACAATGGAGCTGCATGATATGGCGGGATCCAAGATCCATGGCGAGCGCGTCATACTTTAGGTGC',\n",
+    "            'ATGGTGCGCACGATTGAGTTGGAATTAGTCCCCAGACTGGCGACCATTACATACACCCTCCACCTTCCACGTCGGTTCAGCACGGGGTGGTGTTTCTCTCCAACACGAGGCCCGGGCGAATTAGTATTGATAATGCCTGGGCAGACAGCACTGGCCCGGCAGGAGATACTGGGCGATGGAAGACGTGGGTTAAGGCACGTCGGTTCTCTAGGTTTTCTATACTGGGCACGGAAGTTAGGGGCTAAAGAGCAACATACCTCTCCGCTGTCGGTCGATAGTGAGTCTTGCATAGCGATTGCTAAGAGCCTAGTTAAGCATACTCGTAACCGCGCCGCG',\n",
+    "            'ATGCCTCCCGGTATCGCTGAGGCCCTAGCAAACGCACAGATCAACCAACTTGTGTCTAACGCCATGGGATCTGCCGCATTAGCTAACAATATTACGCCTATAACGCACGGCTTACCTTTCAAATGTGCTGACCAAGTGGCCTCGATACAATTAGGGACTACAGGGGATAGATGTGCAAGTTTGTTTCTATCAGCGCCGGTGATTCTACGACCGTGTAATCAGAGGGCAGCGAAGATGGATAAGGGGTTGACCAACATGCTCAGTAATGATCCAGGAGCCGGTTATGCCATGCGAATATGCATGTGCACAGTAGCCGGGAGAGCTTGTATTCGTATA',\n",
+    "            'ATGACCCCACGCGGACCGTCAGGAGAAATCCTCTCACGGGATCCCGTCACTGTAACGCTCAGGGTCTTACGGCAACTCGAATGCTGTCGAAAATGTGGCAGTCAATCTCTATACCGGGGTCCGAGCTTTTTACATGTAATTTTGCAAGAATTCTTATATAGCACGATGAGACACGTACCCGATCACTTCGCCCAGCATACACTGATTAATACCGTCTATGTGATGTATTTACTTAAGACTCTCGCAACACCCGTGGCTTGGCGAAGTCTATCTGCACTAGTCGGGTCAGCCGTGCGGCGCGCACACACATCAAAGTGGCCGCAGTTGAGCGCAGTG']\n",
+    "\n",
+    "len(dna_seqs[0])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "c97400e5-044d-44bb-b59d-38cb98f0f1c0",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[[1.09830755e-311, 1.09830370e-311, 0.00000000e+000, ...,\n",
+       "         0.00000000e+000, 0.00000000e+000, 0.00000000e+000],\n",
+       "        [0.00000000e+000, 0.00000000e+000, 0.00000000e+000, ...,\n",
+       "         6.95314272e-310, 6.95314272e-310, 6.95314272e-310],\n",
+       "        [6.95314272e-310, 6.95314272e-310, 6.95314272e-310, ...,\n",
+       "         6.95314272e-310, 6.95314272e-310, 6.95314272e-310],\n",
+       "        [6.95314272e-310, 6.95314272e-310, 6.95314272e-310, ...,\n",
+       "         6.95314272e-310, 6.95314272e-310, 6.95314272e-310],\n",
+       "        [6.95314272e-310, 6.95314272e-310, 6.95314272e-310, ...,\n",
+       "         6.95314272e-310, 6.95314272e-310, 6.95314272e-310]],\n",
+       "\n",
+       "       [[6.95314272e-310, 6.95314272e-310, 6.95314272e-310, ...,\n",
+       "         6.95314272e-310, 6.95314272e-310, 6.95314272e-310],\n",
+       "        [6.95314272e-310, 6.95314272e-310, 6.95314272e-310, ...,\n",
+       "         1.09831568e-311, 1.09826839e-311, 6.95314271e-310],\n",
+       "        [1.09831568e-311, 1.09826776e-311, 6.95314271e-310, ...,\n",
+       "         6.95314266e-310, 6.95314266e-310, 6.95314266e-310],\n",
+       "        [6.95314266e-310, 6.95314266e-310, 6.95314266e-310, ...,\n",
+       "         6.95314265e-310, 6.95314271e-310, 6.95314269e-310],\n",
+       "        [6.95314271e-310, 6.95314271e-310, 6.95314271e-310, ...,\n",
+       "         0.00000000e+000, 0.00000000e+000, 0.00000000e+000]],\n",
+       "\n",
+       "       [[0.00000000e+000, 0.00000000e+000, 0.00000000e+000, ...,\n",
+       "         0.00000000e+000, 0.00000000e+000, 0.00000000e+000],\n",
+       "        [0.00000000e+000, 0.00000000e+000, 0.00000000e+000, ...,\n",
+       "         0.00000000e+000, 0.00000000e+000, 0.00000000e+000],\n",
+       "        [0.00000000e+000, 0.00000000e+000, 0.00000000e+000, ...,\n",
+       "         0.00000000e+000, 0.00000000e+000, 0.00000000e+000],\n",
+       "        [0.00000000e+000, 0.00000000e+000, 0.00000000e+000, ...,\n",
+       "         6.95314271e-310, 1.09824492e-311, 6.95314271e-310],\n",
+       "        [1.09824492e-311, 6.95314271e-310, 1.09824492e-311, ...,\n",
+       "         0.00000000e+000, 0.00000000e+000, 0.00000000e+000]],\n",
+       "\n",
+       "       [[0.00000000e+000, 0.00000000e+000, 0.00000000e+000, ...,\n",
+       "         1.09831643e-311, 1.09831643e-311, 1.09831643e-311],\n",
+       "        [1.09831643e-311, 1.09831643e-311, 1.09831643e-311, ...,\n",
+       "         1.09831773e-311, 1.09831773e-311, 1.09831773e-311],\n",
+       "        [1.09831773e-311, 1.09831773e-311, 1.09831773e-311, ...,\n",
+       "         1.09831780e-311, 1.09831780e-311, 1.09831780e-311],\n",
+       "        [1.09831780e-311, 1.09831780e-311, 1.09831780e-311, ...,\n",
+       "         1.09831785e-311, 1.09831785e-311, 1.09831785e-311],\n",
+       "        [1.09831785e-311, 1.09831785e-311, 1.09831785e-311, ...,\n",
+       "         6.95314272e-310, 6.95314272e-310, 6.95314272e-310]],\n",
+       "\n",
+       "       [[6.95314272e-310, 6.95314272e-310, 6.95314272e-310, ...,\n",
+       "         6.95314272e-310, 6.95314272e-310, 6.95314272e-310],\n",
+       "        [6.95314272e-310, 6.95314272e-310, 6.95314272e-310, ...,\n",
+       "         6.95314272e-310, 6.95314272e-310, 6.95314272e-310],\n",
+       "        [6.95314272e-310, 6.95314272e-310, 6.95314272e-310, ...,\n",
+       "         1.09831772e-311, 1.09831772e-311, 1.09831772e-311],\n",
+       "        [1.09831772e-311, 1.09831772e-311, 1.09831772e-311, ...,\n",
+       "         6.95314272e-310, 6.95314272e-310, 6.95314272e-310],\n",
+       "        [6.95314272e-310, 6.95314272e-310, 6.95314272e-310, ...,\n",
+       "         6.95314272e-310, 6.95314272e-310, 6.95314272e-310]]])"
+      ]
+     },
+     "execution_count": 42,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dna_array = np.ndarray((5, 5, 336))\n",
+    "dna_array"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "id": "1414c3c3-b720-49e2-85f4-7eba884c91f5",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[[0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.]],\n",
+       "\n",
+       "       [[0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.]],\n",
+       "\n",
+       "       [[0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.]],\n",
+       "\n",
+       "       [[0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.]],\n",
+       "\n",
+       "       [[0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.],\n",
+       "        [0., 0., 0., ..., 0., 0., 0.]]])"
+      ]
+     },
+     "execution_count": 44,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dna_array = np.zeros((5, 5, 336))\n",
+    "dna_array"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "d6bea040-1174-4c0b-963a-bc557beb5f9e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(5, 5, 336)"
+      ]
+     },
+     "execution_count": 46,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dna_array.shape"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "id": "d62f9a49-c7c4-4a48-95c3-8d4a6096ca3b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "for idx1 in range(len(dna_seqs)):\n",
+    "    # loop 1 gets each seq\n",
+    "    # loop 2 gets the other seq to compare to.\n",
+    "    seq1 = dna_seqs[idx1]\n",
+    "    for idx2 in range(len(dna_seqs)):\n",
+    "        seq2 = dna_seqs[idx2]\n",
+    "        # assume the sequences are the same length\n",
+    "        for nt in range(len(seq1)):\n",
+    "            if seq1[nt] == seq2[nt]:\n",
+    "                dna_array[idx1, idx2, nt] = 1\n",
+    "            else:\n",
+    "                dna_array[idx1, idx2, nt] = 0 # we don't actually need this because the default value is already 0"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "id": "d6948f79-4440-4187-b9bf-4f8735ffa5f5",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n",
+       "       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.])"
+      ]
+     },
+     "execution_count": 50,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dna_array[1, 1, :]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "id": "7958b81e-3708-4da5-8a00-dd97de52c33a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([1., 1., 1., 0., 0., 1., 0., 1., 0., 0., 1., 0., 0., 0., 1., 0., 0.,\n",
+       "       0., 1., 1., 0., 0., 0., 1., 1., 1., 0., 0., 0., 0., 0., 0., 0., 0.,\n",
+       "       1., 1., 0., 0., 1., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0., 1., 0.,\n",
+       "       1., 1., 0., 0., 1., 0., 1., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.,\n",
+       "       1., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,\n",
+       "       1., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 1., 1., 0., 0., 0., 0.,\n",
+       "       0., 0., 1., 0., 1., 0., 1., 0., 0., 0., 1., 0., 1., 1., 1., 1., 0.,\n",
+       "       1., 0., 0., 1., 1., 0., 0., 0., 1., 0., 1., 0., 0., 1., 1., 0., 1.,\n",
+       "       1., 1., 0., 1., 1., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,\n",
+       "       0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 1., 0., 0.,\n",
+       "       0., 0., 0., 0., 0., 0., 0., 1., 1., 0., 1., 0., 0., 0., 0., 0., 0.,\n",
+       "       0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.,\n",
+       "       0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 1., 0., 0., 1., 1., 0., 1.,\n",
+       "       0., 0., 0., 0., 1., 0., 1., 1., 0., 0., 0., 0., 0., 1., 1., 0., 0.,\n",
+       "       0., 0., 0., 0., 1., 1., 1., 1., 0., 1., 1., 1., 0., 0., 1., 0., 1.,\n",
+       "       0., 0., 1., 0., 1., 0., 0., 0., 0., 1., 1., 0., 0., 0., 0., 0., 1.,\n",
+       "       0., 0., 0., 1., 0., 0., 0., 0., 0., 1., 0., 1., 0., 0., 0., 0., 0.,\n",
+       "       0., 0., 0., 0., 1., 1., 1., 1., 0., 0., 0., 0., 1., 1., 0., 0., 0.,\n",
+       "       0., 1., 0., 0., 0., 0., 0., 0., 1., 0., 1., 0., 0., 1., 1., 0., 0.,\n",
+       "       0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])"
+      ]
+     },
+     "execution_count": 52,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dna_array[1, 4, :] "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 94,
+   "id": "138ba924-ccf9-40a3-92b3-27dde183f618",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3506.0"
+      ]
+     },
+     "execution_count": 94,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.sum(dna_array)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 96,
+   "id": "e03ec496-9d12-4b7b-a6b9-3ed5a98573ec",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Help on _ArrayFunctionDispatcher in module numpy:\n",
+      "\n",
+      "sum(a, axis=None, dtype=None, out=None, keepdims=<no value>, initial=<no value>, where=<no value>)\n",
+      "    Sum of array elements over a given axis.\n",
+      "    \n",
+      "    Parameters\n",
+      "    ----------\n",
+      "    a : array_like\n",
+      "        Elements to sum.\n",
+      "    axis : None or int or tuple of ints, optional\n",
+      "        Axis or axes along which a sum is performed.  The default,\n",
+      "        axis=None, will sum all of the elements of the input array.  If\n",
+      "        axis is negative it counts from the last to the first axis.\n",
+      "    \n",
+      "        .. versionadded:: 1.7.0\n",
+      "    \n",
+      "        If axis is a tuple of ints, a sum is performed on all of the axes\n",
+      "        specified in the tuple instead of a single axis or all the axes as\n",
+      "        before.\n",
+      "    dtype : dtype, optional\n",
+      "        The type of the returned array and of the accumulator in which the\n",
+      "        elements are summed.  The dtype of `a` is used by default unless `a`\n",
+      "        has an integer dtype of less precision than the default platform\n",
+      "        integer.  In that case, if `a` is signed then the platform integer\n",
+      "        is used while if `a` is unsigned then an unsigned integer of the\n",
+      "        same precision as the platform integer is used.\n",
+      "    out : ndarray, optional\n",
+      "        Alternative output array in which to place the result. It must have\n",
+      "        the same shape as the expected output, but the type of the output\n",
+      "        values will be cast if necessary.\n",
+      "    keepdims : bool, optional\n",
+      "        If this is set to True, the axes which are reduced are left\n",
+      "        in the result as dimensions with size one. With this option,\n",
+      "        the result will broadcast correctly against the input array.\n",
+      "    \n",
+      "        If the default value is passed, then `keepdims` will not be\n",
+      "        passed through to the `sum` method of sub-classes of\n",
+      "        `ndarray`, however any non-default value will be.  If the\n",
+      "        sub-class' method does not implement `keepdims` any\n",
+      "        exceptions will be raised.\n",
+      "    initial : scalar, optional\n",
+      "        Starting value for the sum. See `~numpy.ufunc.reduce` for details.\n",
+      "    \n",
+      "        .. versionadded:: 1.15.0\n",
+      "    \n",
+      "    where : array_like of bool, optional\n",
+      "        Elements to include in the sum. See `~numpy.ufunc.reduce` for details.\n",
+      "    \n",
+      "        .. versionadded:: 1.17.0\n",
+      "    \n",
+      "    Returns\n",
+      "    -------\n",
+      "    sum_along_axis : ndarray\n",
+      "        An array with the same shape as `a`, with the specified\n",
+      "        axis removed.   If `a` is a 0-d array, or if `axis` is None, a scalar\n",
+      "        is returned.  If an output array is specified, a reference to\n",
+      "        `out` is returned.\n",
+      "    \n",
+      "    See Also\n",
+      "    --------\n",
+      "    ndarray.sum : Equivalent method.\n",
+      "    \n",
+      "    add.reduce : Equivalent functionality of `add`.\n",
+      "    \n",
+      "    cumsum : Cumulative sum of array elements.\n",
+      "    \n",
+      "    trapz : Integration of array values using the composite trapezoidal rule.\n",
+      "    \n",
+      "    mean, average\n",
+      "    \n",
+      "    Notes\n",
+      "    -----\n",
+      "    Arithmetic is modular when using integer types, and no error is\n",
+      "    raised on overflow.\n",
+      "    \n",
+      "    The sum of an empty array is the neutral element 0:\n",
+      "    \n",
+      "    >>> np.sum([])\n",
+      "    0.0\n",
+      "    \n",
+      "    For floating point numbers the numerical precision of sum (and\n",
+      "    ``np.add.reduce``) is in general limited by directly adding each number\n",
+      "    individually to the result causing rounding errors in every step.\n",
+      "    However, often numpy will use a  numerically better approach (partial\n",
+      "    pairwise summation) leading to improved precision in many use-cases.\n",
+      "    This improved precision is always provided when no ``axis`` is given.\n",
+      "    When ``axis`` is given, it will depend on which axis is summed.\n",
+      "    Technically, to provide the best speed possible, the improved precision\n",
+      "    is only used when the summation is along the fast axis in memory.\n",
+      "    Note that the exact precision may vary depending on other parameters.\n",
+      "    In contrast to NumPy, Python's ``math.fsum`` function uses a slower but\n",
+      "    more precise approach to summation.\n",
+      "    Especially when summing a large number of lower precision floating point\n",
+      "    numbers, such as ``float32``, numerical errors can become significant.\n",
+      "    In such cases it can be advisable to use `dtype=\"float64\"` to use a higher\n",
+      "    precision for the output.\n",
+      "    \n",
+      "    Examples\n",
+      "    --------\n",
+      "    >>> np.sum([0.5, 1.5])\n",
+      "    2.0\n",
+      "    >>> np.sum([0.5, 0.7, 0.2, 1.5], dtype=np.int32)\n",
+      "    1\n",
+      "    >>> np.sum([[0, 1], [0, 5]])\n",
+      "    6\n",
+      "    >>> np.sum([[0, 1], [0, 5]], axis=0)\n",
+      "    array([0, 6])\n",
+      "    >>> np.sum([[0, 1], [0, 5]], axis=1)\n",
+      "    array([1, 5])\n",
+      "    >>> np.sum([[0, 1], [np.nan, 5]], where=[False, True], axis=1)\n",
+      "    array([1., 5.])\n",
+      "    \n",
+      "    If the accumulator is too small, overflow occurs:\n",
+      "    \n",
+      "    >>> np.ones(128, dtype=np.int8).sum(dtype=np.int8)\n",
+      "    -128\n",
+      "    \n",
+      "    You can also start the sum with a value other than zero:\n",
+      "    \n",
+      "    >>> np.sum([10], initial=5)\n",
+      "    15\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "help(np.sum)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 104,
+   "id": "1a0bf51d-c074-4853-9c1a-743e1d214be9",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([5., 5., 5., 5., 5.])"
+      ]
+     },
+     "execution_count": 104,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "np.sum(dna_array[: , : , 0], axis=0)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 106,
+   "id": "650eec8a-775e-4f09-947b-1f5dadeb5310",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 108,
+   "id": "8d49ff3c-04e6-475d-9235-1aece739c2a5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "phone_book = {\"Names\": [\"Mike\", \"Daniel\", \"Ellie\", \"Heather\"],\n",
+    "             \"Office\": [\"6.17\", \"5.23\", \"3.20\", \"3.18\"],\n",
+    "             \"Department\": [\"Immunology\", \"Neuroscience\", \"Developmental Biology\", \"Immunology\"]}\n",
+    "pb_df = pd.DataFrame(phone_book)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 110,
+   "id": "f674f6d3-d48c-4fd2-b498-80601ceb1649",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "pandas.core.series.Series"
+      ]
+     },
+     "execution_count": 110,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(pb_df.iloc[0, :])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 112,
+   "id": "bf13e929-06e4-4b76-b3a3-7feaa0aad516",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Names               Mike\n",
+       "Office              6.17\n",
+       "Department    Immunology\n",
+       "Name: 0, dtype: object"
+      ]
+     },
+     "execution_count": 112,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pb_df.iloc[0, :]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 114,
+   "id": "05dbbcc6-53b4-495f-b4c2-b32bc1525950",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0       Mike\n",
+       "1     Daniel\n",
+       "2      Ellie\n",
+       "3    Heather\n",
+       "Name: Names, dtype: object"
+      ]
+     },
+     "execution_count": 114,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pb_df.iloc[:, 0] # the first column"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 116,
+   "id": "b5f99916-e8c3-43b7-83f4-bb6f128c4886",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0       Mike\n",
+       "1     Daniel\n",
+       "2      Ellie\n",
+       "3    Heather\n",
+       "Name: Names, dtype: object"
+      ]
+     },
+     "execution_count": 116,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pb_df[\"Names\"]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 118,
+   "id": "1a4f390a-3897-4e45-ab4d-7ac10789a329",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0    True\n",
+       "1    True\n",
+       "2    True\n",
+       "3    True\n",
+       "Name: Names, dtype: bool"
+      ]
+     },
+     "execution_count": 118,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pb_df.iloc[:, 0] == pb_df[\"Names\"] # these are equivalent."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 120,
+   "id": "a5a48b54-58b1-4c7c-a2ad-b2d2d8ac33e4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Names</th>\n",
+       "      <th>Office</th>\n",
+       "      <th>Department</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Names</th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>Mike</th>\n",
+       "      <td>Mike</td>\n",
+       "      <td>6.17</td>\n",
+       "      <td>Immunology</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Daniel</th>\n",
+       "      <td>Daniel</td>\n",
+       "      <td>5.23</td>\n",
+       "      <td>Neuroscience</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Ellie</th>\n",
+       "      <td>Ellie</td>\n",
+       "      <td>3.20</td>\n",
+       "      <td>Developmental Biology</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Heather</th>\n",
+       "      <td>Heather</td>\n",
+       "      <td>3.18</td>\n",
+       "      <td>Immunology</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "           Names Office             Department\n",
+       "Names                                         \n",
+       "Mike        Mike   6.17             Immunology\n",
+       "Daniel    Daniel   5.23           Neuroscience\n",
+       "Ellie      Ellie   3.20  Developmental Biology\n",
+       "Heather  Heather   3.18             Immunology"
+      ]
+     },
+     "execution_count": 120,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pb_df.set_index(\"Names\", inplace=True, drop=False)\n",
+    "pb_df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 122,
+   "id": "7926fbcf-4eb8-4ac4-bf3b-d7e9fab8aaa9",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Names               Mike\n",
+       "Office              6.17\n",
+       "Department    Immunology\n",
+       "Name: Mike, dtype: object"
+      ]
+     },
+     "execution_count": 122,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pb_df.loc[\"Mike\", :]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 124,
+   "id": "547df7d7-2af1-4150-95d1-b422683ef0dc",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Names</th>\n",
+       "      <th>Office</th>\n",
+       "      <th>Department</th>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Names</th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "      <th></th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>Mike</th>\n",
+       "      <td>Mike</td>\n",
+       "      <td>6.17</td>\n",
+       "      <td>Immunology</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>Heather</th>\n",
+       "      <td>Heather</td>\n",
+       "      <td>3.18</td>\n",
+       "      <td>Immunology</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "           Names Office  Department\n",
+       "Names                              \n",
+       "Mike        Mike   6.17  Immunology\n",
+       "Heather  Heather   3.18  Immunology"
+      ]
+     },
+     "execution_count": 124,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pb_df.loc[[\"Mike\", \"Heather\"], :] # selecting multiple rows returns a data frame."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 126,
+   "id": "3ed55c72-a2ff-490c-90e1-b5e1b0d59da4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>0</th>\n",
+       "      <th>1</th>\n",
+       "      <th>2</th>\n",
+       "      <th>3</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>Mike</td>\n",
+       "      <td>Daniel</td>\n",
+       "      <td>Ellie</td>\n",
+       "      <td>Heather</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>6.17</td>\n",
+       "      <td>5.23</td>\n",
+       "      <td>3.20</td>\n",
+       "      <td>3.18</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>Immunology</td>\n",
+       "      <td>Neuroscience</td>\n",
+       "      <td>Developmental Biology</td>\n",
+       "      <td>Immunology</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "            0             1                      2           3\n",
+       "0        Mike        Daniel                  Ellie     Heather\n",
+       "1        6.17          5.23                   3.20        3.18\n",
+       "2  Immunology  Neuroscience  Developmental Biology  Immunology"
+      ]
+     },
+     "execution_count": 126,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "phone_list = [[\"Mike\", \"Daniel\", \"Ellie\", \"Heather\"],\n",
+    "              [\"6.17\", \"5.23\", \"3.20\", \"3.18\"],\n",
+    "              [\"Immunology\", \"Neuroscience\", \"Developmental Biology\", \"Immunology\"]]\n",
+    "list_df = pd.DataFrame(phone_list)\n",
+    "list_df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 130,
+   "id": "467791d7-37bd-4d86-8cd7-53cd1eed1e75",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import re\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 132,
+   "id": "3173e9bb-94d5-4a01-84e0-88e99c9095b4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "re.compile(r'TATA[A|T]A[A|T]', re.UNICODE)"
+      ]
+     },
+     "execution_count": 132,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# we make our regex then convert it into a regex object using re.compile\n",
+    "tata_re = re.compile(\"TATA[A|T]A[A|T]\")\n",
+    "tata_re"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 134,
+   "id": "86ec0964-2d25-40a1-b1cc-95ee99a64b14",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<re.Match object; span=(37, 44), match='TATATAT'>"
+      ]
+     },
+     "execution_count": 134,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bact_seq = \"CACTTCAGGTTAAGCGGCGCGGCCTGCGCATTTTGGATATATATAATCCT\"\n",
+    "tata_match = tata_re.search(bact_seq)\n",
+    "tata_match"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 136,
+   "id": "0b13e0b9-e95a-4ac4-8f48-ddec5d6962a3",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'TATATAT'"
+      ]
+     },
+     "execution_count": 136,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tata_idx = tata_match.span()\n",
+    "bact_seq[tata_idx[0]:tata_idx[1]] # tata_idx[0] is the first position, tata_idx[1] is the last position(+1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 138,
+   "id": "e221c5ac-c63e-4821-af37-e08124eb00fe",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'TATATAT'"
+      ]
+     },
+     "execution_count": 138,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tata_match.group(0)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d09bf9e8-a174-400b-9f98-a99d5dfafacc",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
